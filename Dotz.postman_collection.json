@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "38290b76-faf1-4ded-9580-5656c6942c73",
+		"_postman_id": "2e6aea67-0a98-4f56-9bc9-2c5684f956a5",
 		"name": "Dotz",
 		"description": "Requisições da Web API desenvolvida para avaliação técnica de vaga de emprego na Dotz.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -20,7 +20,12 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"email\": \"marcus@derjunge.com\",\n\t\"password\": \"diemilch\",\n\t\"repeat_password\": \"diemilch\"\n}"
+					"raw": "{\n\t\"name\": \"Marcus Der Junge\",\n\t\"email\": \"marcus@derjunge.com\",\n\t\"password\": \"diemilch\",\n\t\"repeat_password\": \"diemilch\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
 					"raw": "http://localhost:56000/api/user/register",
@@ -52,7 +57,12 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"email\": \"marcus@derjunge.com\",\n\t\"password\": \"diemilch\"\n}"
+					"raw": "{\n\t\"email\": \"marcus@derjunge.com\",\n\t\"password\": \"diemilch\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
 					"raw": "http://localhost:56000/api/user/authenticate",
@@ -78,7 +88,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJjMTU2Nzk1MS0zNDM5LTQ2N2QtOTU2OS05OGEyYjAzNmM0YjciLCJuYmYiOjE1NjgzNDYzMjUsImV4cCI6MTU2ODM0OTkyNSwiaWF0IjoxNTY4MzQ2MzI1LCJpc3MiOiJEb3R6IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCJ9.LfP1-c9vU-ydWhal1frru2aLUXlO3calhjk0g-CNLps",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIwNjIxNzY0Mi01ZTVjLTQ0ZjgtOGY2YS01ZmU1YWUyYjRjNGIiLCJuYmYiOjE1Njg0MDY1MzIsImV4cCI6MTU2ODQxMDEzMiwiaWF0IjoxNTY4NDA2NTMyLCJpc3MiOiJEb3R6IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCJ9.IkHDw00-PeKDi8ZNs6nL1OOktWXpK2Ksa4HsXcoNHjQ",
 							"type": "string"
 						}
 					]
@@ -96,6 +106,52 @@
 						"api",
 						"user",
 						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Address - Register",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIwNjIxNzY0Mi01ZTVjLTQ0ZjgtOGY2YS01ZmU1YWUyYjRjNGIiLCJuYmYiOjE1Njg0MDY1MzIsImV4cCI6MTU2ODQxMDEzMiwiaWF0IjoxNTY4NDA2NTMyLCJpc3MiOiJEb3R6IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCJ9.IkHDw00-PeKDi8ZNs6nL1OOktWXpK2Ksa4HsXcoNHjQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"contact_name\": \"Marcela Das Mädchen\",\n\t\"postal_code\": \"04538-133\",\n\t\"state\": \"SP\",\n\t\"city\": \"São Paulo\",\n\t\"neighborhood\": \"Itaim Bibi\",\n\t\"street_name\": \"Av. Brg. Faria Lima\",\n\t\"street_number\": \"3477\",\n\t\"complement\": \"Google Brasil\",\n\t\"phone\": \"(11) 2395-8400\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:56000/api/address",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "56000",
+					"path": [
+						"api",
+						"address"
 					]
 				}
 			},
