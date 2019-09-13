@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29230.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dotz.Api", "Dotz.Api\Dotz.Api.csproj", "{97D68D23-0E0F-4F26-BC9E-56933BD43F7D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. Domain", "01. Domain", "{8B80655B-0534-4214-81C5-3155D032E5E6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02. Infra", "02. Infra", "{4FC50164-08A5-43D6-BBA1-1193E724224F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03. Application", "03. Application", "{248393BB-85C3-4090-8930-041758A2A4A5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dotz.Domain", "Dotz.Domain\Dotz.Domain.csproj", "{538AB4A5-65D1-4225-A043-163D46894169}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dotz.Infra.EF", "Dotz.Infra.EF\Dotz.Infra.EF.csproj", "{B09A677D-9EA6-4AE3-9CAD-76EA6BE547D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotz.Infra.Security", "Dotz.Infra.Security\Dotz.Infra.Security.csproj", "{528B350B-8789-4DA7-9D98-376EA94395E1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97D68D23-0E0F-4F26-BC9E-56933BD43F7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97D68D23-0E0F-4F26-BC9E-56933BD43F7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97D68D23-0E0F-4F26-BC9E-56933BD43F7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97D68D23-0E0F-4F26-BC9E-56933BD43F7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{538AB4A5-65D1-4225-A043-163D46894169}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{538AB4A5-65D1-4225-A043-163D46894169}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{538AB4A5-65D1-4225-A043-163D46894169}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{538AB4A5-65D1-4225-A043-163D46894169}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B09A677D-9EA6-4AE3-9CAD-76EA6BE547D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B09A677D-9EA6-4AE3-9CAD-76EA6BE547D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B09A677D-9EA6-4AE3-9CAD-76EA6BE547D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B09A677D-9EA6-4AE3-9CAD-76EA6BE547D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{528B350B-8789-4DA7-9D98-376EA94395E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{528B350B-8789-4DA7-9D98-376EA94395E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{528B350B-8789-4DA7-9D98-376EA94395E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{528B350B-8789-4DA7-9D98-376EA94395E1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{97D68D23-0E0F-4F26-BC9E-56933BD43F7D} = {248393BB-85C3-4090-8930-041758A2A4A5}
+		{538AB4A5-65D1-4225-A043-163D46894169} = {8B80655B-0534-4214-81C5-3155D032E5E6}
+		{B09A677D-9EA6-4AE3-9CAD-76EA6BE547D9} = {4FC50164-08A5-43D6-BBA1-1193E724224F}
+		{528B350B-8789-4DA7-9D98-376EA94395E1} = {4FC50164-08A5-43D6-BBA1-1193E724224F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FB70E0CB-7E4A-457A-8053-269E3D73A594}
+	EndGlobalSection
+EndGlobal
