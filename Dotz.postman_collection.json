@@ -1,0 +1,105 @@
+{
+	"info": {
+		"_postman_id": "38290b76-faf1-4ded-9580-5656c6942c73",
+		"name": "Dotz",
+		"description": "Requisições da Web API desenvolvida para avaliação técnica de vaga de emprego na Dotz.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User - Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"marcus@derjunge.com\",\n\t\"password\": \"diemilch\",\n\t\"repeat_password\": \"diemilch\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:56000/api/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "56000",
+					"path": [
+						"api",
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User - Authenticate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"marcus@derjunge.com\",\n\t\"password\": \"diemilch\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:56000/api/user/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "56000",
+					"path": [
+						"api",
+						"user",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User - Get Authenticated User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJjMTU2Nzk1MS0zNDM5LTQ2N2QtOTU2OS05OGEyYjAzNmM0YjciLCJuYmYiOjE1NjgzNDYzMjUsImV4cCI6MTU2ODM0OTkyNSwiaWF0IjoxNTY4MzQ2MzI1LCJpc3MiOiJEb3R6IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCJ9.LfP1-c9vU-ydWhal1frru2aLUXlO3calhjk0g-CNLps",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:56000/api/user/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "56000",
+					"path": [
+						"api",
+						"user",
+						"me"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
