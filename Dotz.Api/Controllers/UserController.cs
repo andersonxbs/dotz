@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using Dotz.Api.Controllers.Abstractions;
 using Dotz.Api.Models.User;
-using Dotz.Domain.Contracts;
+using Dotz.Domain.Contracts.Providers;
+using Dotz.Domain.Contracts.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +12,9 @@ using System.Threading.Tasks;
 
 namespace Dotz.Api.Controllers
 {
-    [Authorize]
     [Route("api/user")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class UserController : DotzControllerBase
     {
         private readonly ISecurityProvider _securityProvider;
         private readonly IUnityOfWork _repositories;
@@ -33,9 +34,6 @@ namespace Dotz.Api.Controllers
         [HttpPost("register")]
         public async Task<ActionResult> Register(RegisterModel registerModel)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState.Values.SelectMany(d => d.Errors));
-
             var registerInfo = await _securityProvider.Register(
                 registerModel.Name, 
                 registerModel.Email, 
@@ -57,9 +55,6 @@ namespace Dotz.Api.Controllers
         [HttpPost("authenticate")]
         public async Task<ActionResult> Authenticate(AuthenticateModel authModel)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState.Values.SelectMany(d => d.Errors));
-
             var authInfo = await _securityProvider.Authenticate(authModel.Email, authModel.Password);
 
             if (!authInfo.Result.Succeeded)
@@ -75,7 +70,7 @@ namespace Dotz.Api.Controllers
         [HttpGet("me")]
         public async Task<ActionResult> Me()
         {
-            var user = await _repositories.Users.GetByIdAsync(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var user = await _repositories.Users.GetByIdAsync(CurrentUserId);
 
             return Ok(_mapper.Map<UserModel>(user));
         }

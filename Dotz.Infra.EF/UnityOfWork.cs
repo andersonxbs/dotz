@@ -1,7 +1,7 @@
-﻿using System.Threading.Tasks;
-using Dotz.Domain.Contracts;
+﻿using Dotz.Domain.Contracts.Repositories;
 using Dotz.Infra.EF.Contexts;
 using Dotz.Infra.EF.Repositories;
+using System.Threading.Tasks;
 
 namespace Dotz.Infra.EF
 {
@@ -10,6 +10,7 @@ namespace Dotz.Infra.EF
         private SystemContext _context;
 
         private IUserRepository _userRepository;
+        private IAddressRepository _addressRepository;
 
         public UnityOfWork(
             SystemContext context)
@@ -25,6 +26,17 @@ namespace Dotz.Infra.EF
                     _userRepository = new UserRepository(_context);
 
                 return _userRepository;
+            }
+        }
+
+        public IAddressRepository Addresses
+        {
+            get
+            {
+                if (_addressRepository == null)
+                    _addressRepository = new AddressRepository(_context);
+
+                return _addressRepository;
             }
         }
 

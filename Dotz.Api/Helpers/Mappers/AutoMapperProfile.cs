@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Dotz.Api.Models.User;
 using Dotz.Domain.Entities;
 
 namespace Dotz.Api.Helpers.Mappers
@@ -9,11 +8,21 @@ namespace Dotz.Api.Helpers.Mappers
         public AutoMapperProfile()
         {
             MapEntitiesToModels();
+            MapModelsToEntities();
         }
 
         private void MapEntitiesToModels()
         {
-            CreateMap<User, UserModel>();
+            CreateMap<User, Models.User.UserModel>();
+            CreateMap<Address, Models.Address.AddressModel>();
+        }
+
+        private void MapModelsToEntities()
+        {
+            CreateMap<Models.Address.AddressModel, Address>()
+                .ForMember(d => d.Id, opt => opt.Ignore())
+                .ForMember(d => d.CreatedAt, opt => opt.Ignore())
+                .ForMember(d => d.User, opt => opt.Ignore());
         }
     }
 }

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 
-namespace Dotz.Domain.Contracts
+namespace Dotz.Domain.Contracts.Providers
 {
     public interface ISecurityProvider
     {

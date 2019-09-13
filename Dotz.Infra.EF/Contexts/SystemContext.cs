@@ -8,6 +8,9 @@ namespace Dotz.Infra.EF.Contexts
     {
         public SystemContext(DbContextOptions options)
             : base(options)
-        { }
+        {
+        }
+
+        public DbSet<Address> Addresses { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using Dotz.Domain.Contracts;
+using Dotz.Domain.Contracts.Providers;
+using Dotz.Domain.Contracts.Repositories;
 using Dotz.Domain.Entities;
 using Dotz.Domain.Settings;
 using Dotz.Infra.EF;
@@ -30,6 +31,7 @@ namespace Dotz.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            //ModelStateInvalidFilter
             services.AddDbContext<SystemContext>(opt => opt.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
 
             services.Configure<IdentityOptions>(options =>

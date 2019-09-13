@@ -1,6 +1,6 @@
-﻿using System.Threading.Tasks;
-using Dotz.Domain.Contracts;
+﻿using Dotz.Domain.Contracts.Repositories;
 using Dotz.Infra.EF.Contexts;
+using System.Threading.Tasks;
 
 namespace Dotz.Infra.EF.Repositories
 {

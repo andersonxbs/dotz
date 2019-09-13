@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Dotz.Domain.Contracts
+namespace Dotz.Domain.Contracts.Repositories
 {
     public interface IRepositoryBase<TEntity, TKey>
     {
