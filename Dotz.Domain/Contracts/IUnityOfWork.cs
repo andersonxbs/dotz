@@ -4,6 +4,8 @@ namespace Dotz.Domain.Contracts
 {
     public interface IUnityOfWork
     {
+        IUserRepository Users { get; }
+
         Task CommitChangesAsync();
     }
 }

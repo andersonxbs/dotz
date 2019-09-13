@@ -1,4 +1,5 @@
 ﻿using Dotz.Domain.Contracts;
+using Dotz.Domain.Entities;
 using Dotz.Domain.Settings;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
@@ -13,13 +14,13 @@ namespace Dotz.Infra.Security
 {
     public class SecurityProvider : ISecurityProvider
     {
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<User> _signInManager;
+        private readonly UserManager<User> _userManager;
         private readonly JWTSettings _jwtSettings;
 
         public SecurityProvider(
-            SignInManager<IdentityUser> signInManager,
-            UserManager<IdentityUser> userManager,
+            SignInManager<User> signInManager,
+            UserManager<User> userManager,
             IOptions<JWTSettings> jwtSettings)
         {
             _signInManager = signInManager;
@@ -27,13 +28,16 @@ namespace Dotz.Infra.Security
             _jwtSettings = jwtSettings.Value;
         }
 
-        public async Task<(IdentityResult Result, IdentityUser User, string Token)> Register(string email, string password)
+        public async Task<(IdentityResult Result, User User, string Token)> Register(
+            string name,
+            string email, 
+            string password)
         {
-            var user = new IdentityUser
+            var user = new User
             {
                 UserName = email,
                 Email = email,
-                EmailConfirmed = true
+                Name = name
             };
 
             var result = await _userManager.CreateAsync(user, password);
@@ -46,7 +50,7 @@ namespace Dotz.Infra.Security
             return (result, user, GenerateJwtToken(user));
         }
 
-        public async Task<(SignInResult Result, IdentityUser User, string Token)> Authenticate(string email, string password)
+        public async Task<(SignInResult Result, User User, string Token)> Authenticate(string email, string password)
         {
             var user = await _userManager.FindByEmailAsync(email);
 

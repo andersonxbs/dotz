@@ -1,4 +1,6 @@
-﻿using Dotz.Domain.Contracts;
+﻿using AutoMapper;
+using Dotz.Domain.Contracts;
+using Dotz.Domain.Entities;
 using Dotz.Domain.Settings;
 using Dotz.Infra.EF;
 using Dotz.Infra.EF.Contexts;
@@ -36,9 +38,11 @@ namespace Dotz.Api
                 options.Password.RequireLowercase = false;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
+                options.User.RequireUniqueEmail = true;
+                options.SignIn.RequireConfirmedEmail = false;
             });
 
-            services.AddDefaultIdentity<IdentityUser>()
+            services.AddDefaultIdentity<User>()
                     .AddRoles<IdentityRole>()
                     .AddEntityFrameworkStores<SystemContext>()
                     .AddDefaultTokenProviders();
@@ -46,6 +50,8 @@ namespace Dotz.Api
             services.AddScoped<IUnityOfWork, UnityOfWork>();
 
             services.AddScoped<ISecurityProvider, SecurityProvider>();
+
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddMvc()
                     .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)

@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Dotz.Domain.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System;
 
 namespace Dotz.Infra.EF.Contexts
 {
-    public class SystemContext : IdentityDbContext
+    public class SystemContext : IdentityDbContext<User>
     {
         public SystemContext(DbContextOptions options)
             : base(options)
