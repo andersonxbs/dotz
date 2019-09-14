@@ -3,14 +3,16 @@ using System;
 using Dotz.Infra.EF.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Dotz.Infra.EF.Migrations
 {
     [DbContext(typeof(SystemContext))]
-    partial class SystemContextModelSnapshot : ModelSnapshot
+    [Migration("20190913224616_Address")]
+    partial class Address
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

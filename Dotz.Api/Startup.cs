@@ -11,11 +11,15 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System;
+using System.Buffers;
 using System.Text;
 
 namespace Dotz.Api
@@ -30,8 +34,7 @@ namespace Dotz.Api
         public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
-        {
-            //ModelStateInvalidFilter
+        {           
             services.AddDbContext<SystemContext>(opt => opt.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
 
             services.Configure<IdentityOptions>(options =>
@@ -61,7 +64,7 @@ namespace Dotz.Api
                     {
                         options.SerializerSettings.ContractResolver = new DefaultContractResolver()
                         {
-                            NamingStrategy = new SnakeCaseNamingStrategy()
+                            NamingStrategy = new SnakeCaseNamingStrategy { ProcessDictionaryKeys = true }
                         };
                     });
 

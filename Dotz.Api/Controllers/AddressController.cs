@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
 using Dotz.Api.Controllers.Abstractions;
+using Dotz.Api.Helpers;
 using Dotz.Api.Models.Address;
 using Dotz.Domain.Contracts.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
-using System.Net;
-using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Dotz.Api.Controllers
@@ -25,6 +24,7 @@ namespace Dotz.Api.Controllers
             _mapper = mapper;
         }
 
+        [AllowAnonymous]
         public async Task<ActionResult> Post(AddressModel addressModel)
         {
             var user = await _repositories.Users.GetByIdAsync(CurrentUserId);
@@ -36,7 +36,9 @@ namespace Dotz.Api.Controllers
 
             addressModel.Id = address.Id;
 
-            return Created($"{address.Id}", addressModel);
+            return Created(
+                Url.Action(nameof(Get), new { id = address.Id }), 
+                addressModel);
         }
 
         [HttpGet("{id}")]

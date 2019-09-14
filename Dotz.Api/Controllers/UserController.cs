@@ -6,6 +6,7 @@ using Dotz.Domain.Contracts.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -43,7 +44,7 @@ namespace Dotz.Api.Controllers
                 return BadRequest(registerInfo.Result.Errors.Where(d => !d.Code.Equals("DuplicateUserName")));
 
             return Created(
-                "me", 
+                Url.Action(nameof(Me)), 
                 new AuthResultModel
                 {
                     User = _mapper.Map<UserModel>(registerInfo.User),
