@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Dotz.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System;
 
@@ -10,6 +11,23 @@ namespace Dotz.Infra.EF.Contexts
         {
             base.OnModelCreating(builder);
 
+            builder.Entity<User>()
+                .HasOne(e => e.Address)
+                .WithOne(e => e.User)
+                .HasForeignKey<Address>(e => e.UserId)
+                .IsRequired();
+
+            builder.Entity<User>()
+                .HasOne(e => e.Account)
+                .WithOne(e => e.User)
+                .HasForeignKey<Account>(e => e.UserId)
+                .IsRequired();
+
+            ConfigureBoolToZeroOneConvertion(builder);
+        }
+
+        private static void ConfigureBoolToZeroOneConvertion(ModelBuilder builder)
+        {
             foreach (var entityType in builder.Model.GetEntityTypes())
             {
                 foreach (var property in entityType.GetProperties())

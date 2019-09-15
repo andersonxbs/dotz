@@ -1,6 +1,7 @@
 ﻿using Dotz.Domain.Contracts.Repositories;
 using Dotz.Domain.Entities;
 using Dotz.Infra.EF.Contexts;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
 
@@ -20,6 +21,12 @@ namespace Dotz.Infra.EF.Repositories
             await _context.Addresses.AddAsync(address);
 
             return address;
+        }
+
+        public async Task<Address> GetByUserIdAsync(string userId)
+        {
+            return await _context.Addresses
+                .FirstOrDefaultAsync(d => d.User.Id == userId);
         }
     }
 }

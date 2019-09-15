@@ -1,9 +1,8 @@
 ﻿using AutoMapper;
 using Dotz.Api.Controllers.Abstractions;
-using Dotz.Api.Helpers;
 using Dotz.Api.Models.Address;
+using Dotz.Api.Models.Shared;
 using Dotz.Domain.Contracts.Repositories;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -24,10 +23,16 @@ namespace Dotz.Api.Controllers
             _mapper = mapper;
         }
 
-        [AllowAnonymous]
+        [HttpPost]
         public async Task<ActionResult> Post(AddressModel addressModel)
         {
             var user = await _repositories.Users.GetByIdAsync(CurrentUserId);
+
+            if (user.Address != null)
+                return BadRequest(new ErrorModel(
+                    $"An address is already registered. " +
+                    $"Request {Url.Action(nameof(Put))} using PUT HTTP method in order to update it."));
+
             var address = await _repositories.Addresses.New(user);
 
             _mapper.Map(addressModel, address);
@@ -37,20 +42,33 @@ namespace Dotz.Api.Controllers
             addressModel.Id = address.Id;
 
             return Created(
-                Url.Action(nameof(Get), new { id = address.Id }), 
+                Url.Action(nameof(Get)), 
                 addressModel);
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult> Get(long id)
+        [HttpPut]
+        public async Task<ActionResult> Put(AddressModel addressModel)
         {
-            var address = await _repositories.Addresses.GetByIdAsync(id);
+            var address = await _repositories.Addresses.GetByUserIdAsync(CurrentUserId);
 
             if (address == null)
-                return BadRequest($"Id {id} does not reference to any existing address.");
-            
-            if (address.User.Id != CurrentUserId)
-                return Forbid("You have no permission to see this address.");
+                return BadRequest(new ErrorModel(
+                    $"There is not an address registered yet. " +
+                    $"Request {Url.Action(nameof(Post))} using POST HTTP method in order to register it."));
+
+            _mapper.Map(addressModel, address);
+
+            await _repositories.CommitChangesAsync();
+
+            addressModel.Id = address.Id;
+
+            return Ok(addressModel);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Get()
+        {
+            var address = await _repositories.Addresses.GetByUserIdAsync(CurrentUserId);
 
             return Ok(_mapper.Map<AddressModel>(address));
         }

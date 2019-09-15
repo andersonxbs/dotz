@@ -59,7 +59,11 @@ namespace Dotz.Api.Controllers
             var authInfo = await _securityProvider.Authenticate(authModel.Email, authModel.Password);
 
             if (!authInfo.Result.Succeeded)
-                return BadRequest(new IdentityError { Code = "InvalidCredentials", Description = "Invalid email or password." });
+                return BadRequest(new IdentityError
+                {
+                    Code = "InvalidCredentials",
+                    Description = "Invalid email or password."
+                });
 
             return Ok(new AuthResultModel
             {

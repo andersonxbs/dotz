@@ -15,6 +15,7 @@ namespace Dotz.Api.Helpers.Mappers
         {
             CreateMap<User, Models.User.UserModel>();
             CreateMap<Address, Models.Address.AddressModel>();
+            CreateMap<Account, Models.Account.AccountModel>();
         }
 
         private void MapModelsToEntities()

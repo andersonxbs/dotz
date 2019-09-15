@@ -35,7 +35,11 @@ namespace Dotz.Api
 
         public void ConfigureServices(IServiceCollection services)
         {           
-            services.AddDbContext<SystemContext>(opt => opt.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<SystemContext>(opt => 
+            {
+                opt.UseLazyLoadingProxies();
+                opt.UseMySQL(Configuration.GetConnectionString("DefaultConnection"));
+            });
 
             services.Configure<IdentityOptions>(options =>
             {

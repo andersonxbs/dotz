@@ -16,6 +16,26 @@ namespace Dotz.Infra.EF.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.6-servicing-10079");
 
+            modelBuilder.Entity("Dotz.Domain.Entities.Account", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<int>("Points");
+
+                    b.Property<string>("UserId")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("Accounts");
+                });
+
             modelBuilder.Entity("Dotz.Domain.Entities.Address", b =>
                 {
                     b.Property<long>("Id")
@@ -41,11 +61,13 @@ namespace Dotz.Infra.EF.Migrations
 
                     b.Property<string>("StreetNumber");
 
-                    b.Property<string>("UserId");
+                    b.Property<string>("UserId")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("Addresses");
                 });
@@ -213,11 +235,20 @@ namespace Dotz.Infra.EF.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Dotz.Domain.Entities.Account", b =>
+                {
+                    b.HasOne("Dotz.Domain.Entities.User", "User")
+                        .WithOne("Account")
+                        .HasForeignKey("Dotz.Domain.Entities.Account", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("Dotz.Domain.Entities.Address", b =>
                 {
                     b.HasOne("Dotz.Domain.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
+                        .WithOne("Address")
+                        .HasForeignKey("Dotz.Domain.Entities.Address", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

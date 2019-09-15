@@ -6,6 +6,7 @@ namespace Dotz.Domain.Contracts.Repositories
     {
         IUserRepository Users { get; }
         IAddressRepository Addresses { get; }
+        IAccountRepository Accounts { get; }
         Task CommitChangesAsync();
     }
 }
