@@ -2,7 +2,7 @@
 
 namespace Dotz.Domain.Contracts.Repositories
 {
-    public interface IUserRepository : IRepository<User, string>
+    public interface IProductRepository : IRepository<Product, long>
     {
     }
 }

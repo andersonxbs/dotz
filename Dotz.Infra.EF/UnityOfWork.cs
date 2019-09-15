@@ -12,6 +12,7 @@ namespace Dotz.Infra.EF
         private IUserRepository _userRepository;
         private IAddressRepository _addressRepository;
         private IAccountRepository _accountRepository;
+        private IProductRepository _productRepository;
 
         public UnityOfWork(
             SystemContext context)
@@ -50,7 +51,18 @@ namespace Dotz.Infra.EF
 
                 return _accountRepository;
             }
-}
+        }
+
+        public IProductRepository Products
+        {
+            get
+            {
+                if (_productRepository == null)
+                    _productRepository = new ProductRepository(_context);
+
+                return _productRepository;
+            }
+        }
 
         public async Task CommitChangesAsync()
         {

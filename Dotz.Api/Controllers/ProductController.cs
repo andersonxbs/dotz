@@ -1,20 +1,19 @@
 ﻿using AutoMapper;
 using Dotz.Api.Controllers.Abstractions;
-using Dotz.Api.Models.Account;
 using Dotz.Domain.Contracts.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace Dotz.Api.Controllers
 {
-    [Route("api/account")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class AccountController : DotzControllerBase
+    public class ProductController : DotzControllerBase
     {
         private readonly IUnityOfWork _repositories;
         private readonly IMapper _mapper;
 
-        public AccountController(
+        public ProductController(
             IUnityOfWork repositories,
             IMapper mapper)
         {
@@ -22,12 +21,12 @@ namespace Dotz.Api.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet]
-        public async Task<ActionResult> Get()
-        {
-            var account = await _repositories.Products.GetAsync();
+        //[HttpGet]
+        //public async Task<ActionResult> Get()
+        //{
+        //    var account = await _repositories.Accounts.GetByUserIdAsync(CurrentUserId);
 
-            return Ok(_mapper.Map<AccountModel>(account));
-        }
+        //    return Ok(_mapper.Map<AccountModel>(account));
+        //}
     }
 }

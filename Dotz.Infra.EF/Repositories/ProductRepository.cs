@@ -5,9 +5,9 @@ using Dotz.Infra.EF.Repositories.Abstractions;
 
 namespace Dotz.Infra.EF.Repositories
 {
-    public class UserRepository : Repository<User, string>, IUserRepository
+    public class ProductRepository : EntityBaseRepository<Product, long>, IProductRepository
     {
-        public UserRepository(SystemContext context)
+        public ProductRepository(SystemContext context)
            : base(context)
         {
         }

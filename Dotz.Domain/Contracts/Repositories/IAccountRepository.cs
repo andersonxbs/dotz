@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Dotz.Domain.Contracts.Repositories
 {
-    public interface IAccountRepository
+    public interface IAccountRepository : IRepository<Account, long>
     {
         Task<Account> GetByUserIdAsync(string userId);
     }

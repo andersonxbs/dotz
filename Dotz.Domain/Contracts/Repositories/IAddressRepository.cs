@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Dotz.Domain.Contracts.Repositories
 {
-    public interface IAddressRepository : IRepositoryBase<Address, long>
+    public interface IAddressRepository : IRepository<Address, long>
     {
         Task<Address> New(User user);
 

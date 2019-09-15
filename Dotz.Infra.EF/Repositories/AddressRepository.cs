@@ -1,13 +1,14 @@
 ﻿using Dotz.Domain.Contracts.Repositories;
 using Dotz.Domain.Entities;
 using Dotz.Infra.EF.Contexts;
+using Dotz.Infra.EF.Repositories.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
 
 namespace Dotz.Infra.EF.Repositories
 {
-    public class AddressRepository : RepositoryBase<Address, long>, IAddressRepository
+    public class AddressRepository : EntityBaseRepository<Address, long>, IAddressRepository
     {
         public AddressRepository(SystemContext context) 
             : base(context)
