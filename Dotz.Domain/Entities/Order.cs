@@ -13,9 +13,9 @@ namespace Dotz.Domain.Entities
 
         public virtual ICollection<OrderItem> Items { get; internal set; } = new List<OrderItem>();
 
-        public long DeliveryId { get; set; }
         public virtual Delivery Delivery { get; set; }
 
+        public string UserId { get; set; }
         public virtual User User { get; set; }
 
         public void SetItems(ICollection<OrderItem> items)

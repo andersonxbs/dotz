@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Dotz.Infra.EF.Migrations
 {
     [DbContext(typeof(SystemContext))]
-    [Migration("20190916081809_Initial")]
+    [Migration("20190916093116_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,7 +43,7 @@ namespace Dotz.Infra.EF.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedAt = new DateTime(2019, 9, 16, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(3664),
+                            CreatedAt = new DateTime(2019, 9, 16, 6, 31, 14, 934, DateTimeKind.Local).AddTicks(8268),
                             PointBalance = 466000,
                             UserId = "aa33380a-c427-4530-b2a8-bd45ae0e8cef"
                         });
@@ -79,7 +79,7 @@ namespace Dotz.Infra.EF.Migrations
                         {
                             Id = 1L,
                             AccountId = 1L,
-                            CreatedAt = new DateTime(2019, 9, 11, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(7936),
+                            CreatedAt = new DateTime(2019, 9, 11, 6, 31, 14, 935, DateTimeKind.Local).AddTicks(3202),
                             Description = "Amazon Credit",
                             NewBalance = 492500,
                             Points = 1500,
@@ -89,7 +89,7 @@ namespace Dotz.Infra.EF.Migrations
                         {
                             Id = 2L,
                             AccountId = 1L,
-                            CreatedAt = new DateTime(2019, 9, 12, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(8803),
+                            CreatedAt = new DateTime(2019, 9, 12, 6, 31, 14, 935, DateTimeKind.Local).AddTicks(4281),
                             Description = "Purchase",
                             NewBalance = 476600,
                             Points = 14400,
@@ -99,7 +99,7 @@ namespace Dotz.Infra.EF.Migrations
                         {
                             Id = 3L,
                             AccountId = 1L,
-                            CreatedAt = new DateTime(2019, 9, 13, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(8816),
+                            CreatedAt = new DateTime(2019, 9, 13, 6, 31, 14, 935, DateTimeKind.Local).AddTicks(4305),
                             Description = "Extra Credit",
                             NewBalance = 512000,
                             Points = 21000,
@@ -109,7 +109,7 @@ namespace Dotz.Infra.EF.Migrations
                         {
                             Id = 4L,
                             AccountId = 1L,
-                            CreatedAt = new DateTime(2019, 9, 14, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(8823),
+                            CreatedAt = new DateTime(2019, 9, 14, 6, 31, 14, 935, DateTimeKind.Local).AddTicks(4318),
                             Description = "Purchase",
                             NewBalance = 487880,
                             Points = 3120,
@@ -119,7 +119,7 @@ namespace Dotz.Infra.EF.Migrations
                         {
                             Id = 5L,
                             AccountId = 1L,
-                            CreatedAt = new DateTime(2019, 9, 15, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(8830),
+                            CreatedAt = new DateTime(2019, 9, 15, 6, 31, 14, 935, DateTimeKind.Local).AddTicks(4330),
                             Description = "Purchase",
                             NewBalance = 466000,
                             Points = 25000,
@@ -171,7 +171,7 @@ namespace Dotz.Infra.EF.Migrations
                             City = "São Paulo",
                             Complement = "Google Brasil",
                             ContactName = "Shimpachi",
-                            CreatedAt = new DateTime(2019, 9, 16, 5, 18, 8, 264, DateTimeKind.Local).AddTicks(2347),
+                            CreatedAt = new DateTime(2019, 9, 16, 6, 31, 14, 932, DateTimeKind.Local).AddTicks(623),
                             Neighborhood = "Itaim Bibi",
                             Phone = "(11) 2395-8400",
                             PostalCode = "04538-133",
@@ -203,6 +203,32 @@ namespace Dotz.Infra.EF.Migrations
                         .IsUnique();
 
                     b.ToTable("deliveries");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CreatedAt = new DateTime(2019, 9, 16, 6, 31, 14, 936, DateTimeKind.Local).AddTicks(838),
+                            DueDate = new DateTime(2019, 9, 26, 6, 31, 14, 936, DateTimeKind.Local).AddTicks(2037),
+                            OrderId = 1L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            CreatedAt = new DateTime(2019, 9, 16, 6, 31, 14, 936, DateTimeKind.Local).AddTicks(4106),
+                            DueDate = new DateTime(2019, 9, 26, 6, 31, 14, 936, DateTimeKind.Local).AddTicks(4119),
+                            OrderId = 2L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            CreatedAt = new DateTime(2019, 9, 16, 6, 31, 14, 936, DateTimeKind.Local).AddTicks(4134),
+                            DueDate = new DateTime(2019, 9, 26, 6, 31, 14, 936, DateTimeKind.Local).AddTicks(4137),
+                            OrderId = 3L,
+                            Status = 2
+                        });
                 });
 
             modelBuilder.Entity("Dotz.Domain.Entities.Order", b =>
@@ -214,8 +240,6 @@ namespace Dotz.Infra.EF.Migrations
 
                     b.Property<DateTime?>("DeletedAt");
 
-                    b.Property<long>("DeliveryId");
-
                     b.Property<int>("TotalPoints");
 
                     b.Property<string>("UserId")
@@ -226,6 +250,29 @@ namespace Dotz.Infra.EF.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("orders");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CreatedAt = new DateTime(2019, 9, 16, 6, 31, 14, 935, DateTimeKind.Local).AddTicks(6379),
+                            TotalPoints = 89803,
+                            UserId = "aa33380a-c427-4530-b2a8-bd45ae0e8cef"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            CreatedAt = new DateTime(2019, 9, 16, 6, 31, 14, 935, DateTimeKind.Local).AddTicks(7457),
+                            TotalPoints = 59748,
+                            UserId = "aa33380a-c427-4530-b2a8-bd45ae0e8cef"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            CreatedAt = new DateTime(2019, 9, 16, 6, 31, 14, 935, DateTimeKind.Local).AddTicks(7473),
+                            TotalPoints = 14937,
+                            UserId = "aa33380a-c427-4530-b2a8-bd45ae0e8cef"
+                        });
                 });
 
             modelBuilder.Entity("Dotz.Domain.Entities.OrderItem", b =>
@@ -252,6 +299,44 @@ namespace Dotz.Infra.EF.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("orderItems");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CreatedAt = new DateTime(2019, 9, 16, 6, 31, 14, 935, DateTimeKind.Local).AddTicks(8257),
+                            OrderId = 1L,
+                            ProductId = 1L,
+                            Quantity = 1,
+                            UnityPoints = 44992
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            CreatedAt = new DateTime(2019, 9, 16, 6, 31, 14, 936, DateTimeKind.Local).AddTicks(12),
+                            OrderId = 1L,
+                            ProductId = 4L,
+                            Quantity = 3,
+                            UnityPoints = 14937
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            CreatedAt = new DateTime(2019, 9, 16, 6, 31, 14, 936, DateTimeKind.Local).AddTicks(35),
+                            OrderId = 2L,
+                            ProductId = 4L,
+                            Quantity = 4,
+                            UnityPoints = 14937
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            CreatedAt = new DateTime(2019, 9, 16, 6, 31, 14, 936, DateTimeKind.Local).AddTicks(39),
+                            OrderId = 3L,
+                            ProductId = 4L,
+                            Quantity = 1,
+                            UnityPoints = 14937
+                        });
                 });
 
             modelBuilder.Entity("Dotz.Domain.Entities.Product", b =>
@@ -277,7 +362,7 @@ namespace Dotz.Infra.EF.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedAt = new DateTime(2019, 9, 16, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(1090),
+                            CreatedAt = new DateTime(2019, 9, 16, 6, 31, 14, 934, DateTimeKind.Local).AddTicks(5002),
                             Points = 44992,
                             Quantity = 2,
                             Title = "DigiCam Binóculo com Câmera Digital"
@@ -285,7 +370,7 @@ namespace Dotz.Infra.EF.Migrations
                         new
                         {
                             Id = 2L,
-                            CreatedAt = new DateTime(2019, 9, 16, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(3180),
+                            CreatedAt = new DateTime(2019, 9, 16, 6, 31, 14, 934, DateTimeKind.Local).AddTicks(6409),
                             Points = 14992,
                             Quantity = 13,
                             Title = "Polidor Automotivo"
@@ -293,7 +378,7 @@ namespace Dotz.Infra.EF.Migrations
                         new
                         {
                             Id = 3L,
-                            CreatedAt = new DateTime(2019, 9, 16, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(3206),
+                            CreatedAt = new DateTime(2019, 9, 16, 6, 31, 14, 934, DateTimeKind.Local).AddTicks(6430),
                             Points = 3676,
                             Quantity = 1,
                             Title = "Forma Para Pizza 25cm - Alumínio Fortaleza"
@@ -301,7 +386,7 @@ namespace Dotz.Infra.EF.Migrations
                         new
                         {
                             Id = 4L,
-                            CreatedAt = new DateTime(2019, 9, 16, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(3210),
+                            CreatedAt = new DateTime(2019, 9, 16, 6, 31, 14, 934, DateTimeKind.Local).AddTicks(6434),
                             Points = 14937,
                             Quantity = 21,
                             Title = "Panela de Vápor Elétrica Oster Gran Taste 700W"
@@ -309,7 +394,7 @@ namespace Dotz.Infra.EF.Migrations
                         new
                         {
                             Id = 5L,
-                            CreatedAt = new DateTime(2019, 9, 16, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(3214),
+                            CreatedAt = new DateTime(2019, 9, 16, 6, 31, 14, 934, DateTimeKind.Local).AddTicks(6438),
                             Points = 5811,
                             Quantity = 10,
                             Title = "Travesseiro Magico - Santista"
@@ -559,6 +644,47 @@ namespace Dotz.Infra.EF.Migrations
                                 .WithOne("Address")
                                 .HasForeignKey("Dotz.Domain.ValueObjects.DeliveryAddress", "DeliveryId")
                                 .OnDelete(DeleteBehavior.Cascade);
+
+                            b1.HasData(
+                                new
+                                {
+                                    DeliveryId = 1L,
+                                    City = "São Paulo",
+                                    Complement = "Google Brasil",
+                                    ContactName = "Shimpachi",
+                                    Neighborhood = "Itaim Bibi",
+                                    Phone = "(11) 2395-8400",
+                                    PostalCode = "04538-133",
+                                    State = "SP",
+                                    StreetName = "Av. Brg. Faria Lima",
+                                    StreetNumber = "3477"
+                                },
+                                new
+                                {
+                                    DeliveryId = 2L,
+                                    City = "São Paulo",
+                                    Complement = "Google Brasil",
+                                    ContactName = "Shimpachi",
+                                    Neighborhood = "Itaim Bibi",
+                                    Phone = "(11) 2395-8400",
+                                    PostalCode = "04538-133",
+                                    State = "SP",
+                                    StreetName = "Av. Brg. Faria Lima",
+                                    StreetNumber = "3477"
+                                },
+                                new
+                                {
+                                    DeliveryId = 3L,
+                                    City = "São Paulo",
+                                    Complement = "Google Brasil",
+                                    ContactName = "Shimpachi",
+                                    Neighborhood = "Itaim Bibi",
+                                    Phone = "(11) 2395-8400",
+                                    PostalCode = "04538-133",
+                                    State = "SP",
+                                    StreetName = "Av. Brg. Faria Lima",
+                                    StreetNumber = "3477"
+                                });
                         });
                 });
 

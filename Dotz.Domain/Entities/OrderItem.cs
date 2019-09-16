@@ -4,6 +4,8 @@ namespace Dotz.Domain.Entities
 {
     public class OrderItem : EntityBase<long>
     {
+        public long OrderId { get; set; }
+
         public virtual Order Order { get; set; }
 
         public long ProductId { get; set; }

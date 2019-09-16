@@ -4,6 +4,7 @@ namespace Dotz.Domain.ValueObjects
 {
     public class DeliveryAddress
     {
+        public long DeliveryId { get; set; }
         public string ContactName { get; set; }
         public string PostalCode { get; set; }
         public string State { get; set; }
