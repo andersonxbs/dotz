@@ -41,6 +41,9 @@ namespace Dotz.Api.Controllers
             if (!registerInfo.Result.Succeeded)
                 return BadRequest(registerInfo.Result.Errors.Where(d => !d.Code.Equals("DuplicateUserName")));
 
+            await _repositories.Accounts.NewAsync(registerInfo.User.Id);
+            await _repositories.CommitChangesAsync();
+
             return Created(
                 Url.Action(nameof(Me)), 
                 new AuthResultModel

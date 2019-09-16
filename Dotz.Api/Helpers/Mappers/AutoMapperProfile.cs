@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Dotz.Domain.Entities;
+using Dotz.Domain.ValueObjects;
 
 namespace Dotz.Api.Helpers.Mappers
 {
@@ -21,6 +22,7 @@ namespace Dotz.Api.Helpers.Mappers
             CreateMap<Order, Models.Order.OrderModel>();
             CreateMap<OrderItem, Models.Order.OrderItemModel>()
                 .ForMember(d => d.ProductTitle, opt => opt.MapFrom(d => d.Product.Title));
+            CreateMap<Delivery, Models.Order.DeliveryModel>();
         }
 
         private void MapModelsToEntities()

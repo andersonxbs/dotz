@@ -10,9 +10,9 @@ namespace Dotz.Api.Models.Order
 
         public int TotalPoints { get; set; }
 
-        public ICollection<OrderItemInputModel> Items { get; internal set; } = new List<OrderItemInputModel>();
+        public ICollection<OrderItemModel> Items { get; internal set; } = new List<OrderItemModel>();
 
-        public Delivery Delivery { get; set; }
+        public DeliveryModel Delivery { get; set; }
 
         public DateTime CreatedAt { get; set; }
     }

@@ -342,33 +342,33 @@ namespace Dotz.Infra.EF.Migrations
                 columns: new[] { "Id", "CreatedAt", "DeletedAt", "Points", "Quantity", "Title" },
                 values: new object[,]
                 {
-                    { 1L, new DateTime(2019, 9, 16, 4, 41, 54, 251, DateTimeKind.Local).AddTicks(5751), null, 44992, 2, "DigiCam Binóculo com Câmera Digital" },
-                    { 2L, new DateTime(2019, 9, 16, 4, 41, 54, 251, DateTimeKind.Local).AddTicks(7352), null, 14992, 13, "Polidor Automotivo" },
-                    { 3L, new DateTime(2019, 9, 16, 4, 41, 54, 251, DateTimeKind.Local).AddTicks(7382), null, 3676, 1, "Forma Para Pizza 25cm - Alumínio Fortaleza" },
-                    { 4L, new DateTime(2019, 9, 16, 4, 41, 54, 251, DateTimeKind.Local).AddTicks(7388), null, 14937, 21, "Panela de Vápor Elétrica Oster Gran Taste 700W" },
-                    { 5L, new DateTime(2019, 9, 16, 4, 41, 54, 251, DateTimeKind.Local).AddTicks(7391), null, 5811, 10, "Travesseiro Magico - Santista" }
+                    { 1L, new DateTime(2019, 9, 16, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(1090), null, 44992, 2, "DigiCam Binóculo com Câmera Digital" },
+                    { 2L, new DateTime(2019, 9, 16, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(3180), null, 14992, 13, "Polidor Automotivo" },
+                    { 3L, new DateTime(2019, 9, 16, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(3206), null, 3676, 1, "Forma Para Pizza 25cm - Alumínio Fortaleza" },
+                    { 4L, new DateTime(2019, 9, 16, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(3210), null, 14937, 21, "Panela de Vápor Elétrica Oster Gran Taste 700W" },
+                    { 5L, new DateTime(2019, 9, 16, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(3214), null, 5811, 10, "Travesseiro Magico - Santista" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Accounts",
                 columns: new[] { "Id", "CreatedAt", "DeletedAt", "PointBalance", "UserId" },
-                values: new object[] { 1L, new DateTime(2019, 9, 16, 4, 41, 54, 251, DateTimeKind.Local).AddTicks(7640), null, 466000, "aa33380a-c427-4530-b2a8-bd45ae0e8cef" });
+                values: new object[] { 1L, new DateTime(2019, 9, 16, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(3664), null, 466000, "aa33380a-c427-4530-b2a8-bd45ae0e8cef" });
 
             migrationBuilder.InsertData(
                 table: "Addresses",
                 columns: new[] { "Id", "City", "Complement", "ContactName", "CreatedAt", "DeletedAt", "Neighborhood", "Phone", "PostalCode", "State", "StreetName", "StreetNumber", "UserId" },
-                values: new object[] { 1L, "São Paulo", "Google Brasil", "Shimpachi", new DateTime(2019, 9, 16, 4, 41, 54, 250, DateTimeKind.Local).AddTicks(9323), null, "Itaim Bibi", "(11) 2395-8400", "04538-133", "SP", "Av. Brg. Faria Lima", "3477", "aa33380a-c427-4530-b2a8-bd45ae0e8cef" });
+                values: new object[] { 1L, "São Paulo", "Google Brasil", "Shimpachi", new DateTime(2019, 9, 16, 5, 18, 8, 264, DateTimeKind.Local).AddTicks(2347), null, "Itaim Bibi", "(11) 2395-8400", "04538-133", "SP", "Av. Brg. Faria Lima", "3477", "aa33380a-c427-4530-b2a8-bd45ae0e8cef" });
 
             migrationBuilder.InsertData(
                 table: "accounttransactions",
                 columns: new[] { "Id", "AccountId", "CreatedAt", "DeletedAt", "Description", "NewBalance", "Points", "Type" },
                 values: new object[,]
                 {
-                    { 1L, 1L, new DateTime(2019, 9, 11, 4, 41, 54, 252, DateTimeKind.Local).AddTicks(1725), null, "Amazon Credit", 492500, 1500, 0 },
-                    { 2L, 1L, new DateTime(2019, 9, 12, 4, 41, 54, 252, DateTimeKind.Local).AddTicks(2425), null, "Purchase", 476600, 14400, 1 },
-                    { 3L, 1L, new DateTime(2019, 9, 13, 4, 41, 54, 252, DateTimeKind.Local).AddTicks(2437), null, "Extra Credit", 512000, 21000, 0 },
-                    { 4L, 1L, new DateTime(2019, 9, 14, 4, 41, 54, 252, DateTimeKind.Local).AddTicks(2444), null, "Purchase", 487880, 3120, 1 },
-                    { 5L, 1L, new DateTime(2019, 9, 15, 4, 41, 54, 252, DateTimeKind.Local).AddTicks(2451), null, "Purchase", 466000, 25000, 1 }
+                    { 1L, 1L, new DateTime(2019, 9, 11, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(7936), null, "Amazon Credit", 492500, 1500, 0 },
+                    { 2L, 1L, new DateTime(2019, 9, 12, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(8803), null, "Purchase", 476600, 14400, 1 },
+                    { 3L, 1L, new DateTime(2019, 9, 13, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(8816), null, "Extra Credit", 512000, 21000, 0 },
+                    { 4L, 1L, new DateTime(2019, 9, 14, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(8823), null, "Purchase", 487880, 3120, 1 },
+                    { 5L, 1L, new DateTime(2019, 9, 15, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(8830), null, "Purchase", 466000, 25000, 1 }
                 });
 
             migrationBuilder.CreateIndex(

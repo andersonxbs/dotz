@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Dotz.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/order")]
     [ApiController]
     public class OrderController : DotzControllerBase
     {
@@ -91,6 +91,9 @@ namespace Dotz.Api.Controllers
         public async Task<ActionResult> GetById(long id)
         {
             var order = await _repositories.Orders.GetByIdAsync(id);
+            
+            if (order.User.Id != CurrentUserId)
+                return new ForbidResult("Your have no permission to get this order.");
 
             return Ok(_mapper.Map<OrderModel>(order));
         }

@@ -8,7 +8,7 @@ namespace Dotz.Domain.Entities
         public string Name { get; set; }
 
         public virtual Address Address { get; set; }
-        public virtual Account Account { get; set; } = new Account();
+        public virtual Account Account { get; set; } 
         public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
     }
 }

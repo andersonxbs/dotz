@@ -41,7 +41,7 @@ namespace Dotz.Infra.EF.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedAt = new DateTime(2019, 9, 16, 4, 41, 54, 251, DateTimeKind.Local).AddTicks(7640),
+                            CreatedAt = new DateTime(2019, 9, 16, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(3664),
                             PointBalance = 466000,
                             UserId = "aa33380a-c427-4530-b2a8-bd45ae0e8cef"
                         });
@@ -77,7 +77,7 @@ namespace Dotz.Infra.EF.Migrations
                         {
                             Id = 1L,
                             AccountId = 1L,
-                            CreatedAt = new DateTime(2019, 9, 11, 4, 41, 54, 252, DateTimeKind.Local).AddTicks(1725),
+                            CreatedAt = new DateTime(2019, 9, 11, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(7936),
                             Description = "Amazon Credit",
                             NewBalance = 492500,
                             Points = 1500,
@@ -87,7 +87,7 @@ namespace Dotz.Infra.EF.Migrations
                         {
                             Id = 2L,
                             AccountId = 1L,
-                            CreatedAt = new DateTime(2019, 9, 12, 4, 41, 54, 252, DateTimeKind.Local).AddTicks(2425),
+                            CreatedAt = new DateTime(2019, 9, 12, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(8803),
                             Description = "Purchase",
                             NewBalance = 476600,
                             Points = 14400,
@@ -97,7 +97,7 @@ namespace Dotz.Infra.EF.Migrations
                         {
                             Id = 3L,
                             AccountId = 1L,
-                            CreatedAt = new DateTime(2019, 9, 13, 4, 41, 54, 252, DateTimeKind.Local).AddTicks(2437),
+                            CreatedAt = new DateTime(2019, 9, 13, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(8816),
                             Description = "Extra Credit",
                             NewBalance = 512000,
                             Points = 21000,
@@ -107,7 +107,7 @@ namespace Dotz.Infra.EF.Migrations
                         {
                             Id = 4L,
                             AccountId = 1L,
-                            CreatedAt = new DateTime(2019, 9, 14, 4, 41, 54, 252, DateTimeKind.Local).AddTicks(2444),
+                            CreatedAt = new DateTime(2019, 9, 14, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(8823),
                             Description = "Purchase",
                             NewBalance = 487880,
                             Points = 3120,
@@ -117,7 +117,7 @@ namespace Dotz.Infra.EF.Migrations
                         {
                             Id = 5L,
                             AccountId = 1L,
-                            CreatedAt = new DateTime(2019, 9, 15, 4, 41, 54, 252, DateTimeKind.Local).AddTicks(2451),
+                            CreatedAt = new DateTime(2019, 9, 15, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(8830),
                             Description = "Purchase",
                             NewBalance = 466000,
                             Points = 25000,
@@ -169,7 +169,7 @@ namespace Dotz.Infra.EF.Migrations
                             City = "São Paulo",
                             Complement = "Google Brasil",
                             ContactName = "Shimpachi",
-                            CreatedAt = new DateTime(2019, 9, 16, 4, 41, 54, 250, DateTimeKind.Local).AddTicks(9323),
+                            CreatedAt = new DateTime(2019, 9, 16, 5, 18, 8, 264, DateTimeKind.Local).AddTicks(2347),
                             Neighborhood = "Itaim Bibi",
                             Phone = "(11) 2395-8400",
                             PostalCode = "04538-133",
@@ -275,7 +275,7 @@ namespace Dotz.Infra.EF.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedAt = new DateTime(2019, 9, 16, 4, 41, 54, 251, DateTimeKind.Local).AddTicks(5751),
+                            CreatedAt = new DateTime(2019, 9, 16, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(1090),
                             Points = 44992,
                             Quantity = 2,
                             Title = "DigiCam Binóculo com Câmera Digital"
@@ -283,7 +283,7 @@ namespace Dotz.Infra.EF.Migrations
                         new
                         {
                             Id = 2L,
-                            CreatedAt = new DateTime(2019, 9, 16, 4, 41, 54, 251, DateTimeKind.Local).AddTicks(7352),
+                            CreatedAt = new DateTime(2019, 9, 16, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(3180),
                             Points = 14992,
                             Quantity = 13,
                             Title = "Polidor Automotivo"
@@ -291,7 +291,7 @@ namespace Dotz.Infra.EF.Migrations
                         new
                         {
                             Id = 3L,
-                            CreatedAt = new DateTime(2019, 9, 16, 4, 41, 54, 251, DateTimeKind.Local).AddTicks(7382),
+                            CreatedAt = new DateTime(2019, 9, 16, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(3206),
                             Points = 3676,
                             Quantity = 1,
                             Title = "Forma Para Pizza 25cm - Alumínio Fortaleza"
@@ -299,7 +299,7 @@ namespace Dotz.Infra.EF.Migrations
                         new
                         {
                             Id = 4L,
-                            CreatedAt = new DateTime(2019, 9, 16, 4, 41, 54, 251, DateTimeKind.Local).AddTicks(7388),
+                            CreatedAt = new DateTime(2019, 9, 16, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(3210),
                             Points = 14937,
                             Quantity = 21,
                             Title = "Panela de Vápor Elétrica Oster Gran Taste 700W"
@@ -307,7 +307,7 @@ namespace Dotz.Infra.EF.Migrations
                         new
                         {
                             Id = 5L,
-                            CreatedAt = new DateTime(2019, 9, 16, 4, 41, 54, 251, DateTimeKind.Local).AddTicks(7391),
+                            CreatedAt = new DateTime(2019, 9, 16, 5, 18, 8, 265, DateTimeKind.Local).AddTicks(3214),
                             Points = 5811,
                             Quantity = 10,
                             Title = "Travesseiro Magico - Santista"

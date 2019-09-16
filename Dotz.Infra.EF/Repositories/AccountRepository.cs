@@ -19,5 +19,14 @@ namespace Dotz.Infra.EF.Repositories
             return await _context.Accounts
                 .FirstOrDefaultAsync(d => d.User.Id == userId);
         }
+
+        public async Task<Account> NewAsync(string userId)
+        {
+            var account = new Account { UserId = userId };
+
+            await _context.Accounts.AddAsync(account);
+
+            return account;
+        }
     }
 }

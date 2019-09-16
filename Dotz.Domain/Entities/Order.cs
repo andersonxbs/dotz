@@ -20,8 +20,6 @@ namespace Dotz.Domain.Entities
 
         public void SetItems(ICollection<OrderItem> items)
         {
-            if (Id != default) return;
-
             Items = items;
 
             TotalPoints = Items.Sum(d => d.Points);
