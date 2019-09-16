@@ -1,9 +1,8 @@
-﻿using Dotz.Domain.Entities.Abstractions;
-
-namespace Dotz.Domain.Entities
+﻿namespace Dotz.Api.Models.Product
 {
-    public class Product : EntityBase<long>
+    public class ProductModel
     {
+        public long Id { get; set; }
         public string Title { get; set; }
         public int Points { get; set; }
         public int Quantity { get; set; }

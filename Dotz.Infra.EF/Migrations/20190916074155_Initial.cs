@@ -48,6 +48,23 @@ namespace Dotz.Infra.EF.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "products",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("MySQL:AutoIncrement", true),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    DeletedAt = table.Column<DateTime>(nullable: true),
+                    Title = table.Column<string>(nullable: true),
+                    Points = table.Column<int>(nullable: false),
+                    Quantity = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_products", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -75,7 +92,8 @@ namespace Dotz.Infra.EF.Migrations
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySQL:AutoIncrement", true),
                     CreatedAt = table.Column<DateTime>(nullable: false),
-                    Points = table.Column<int>(nullable: false),
+                    DeletedAt = table.Column<DateTime>(nullable: true),
+                    PointBalance = table.Column<int>(nullable: false),
                     UserId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
@@ -96,6 +114,7 @@ namespace Dotz.Infra.EF.Migrations
                     Id = table.Column<long>(nullable: false)
                         .Annotation("MySQL:AutoIncrement", true),
                     CreatedAt = table.Column<DateTime>(nullable: false),
+                    DeletedAt = table.Column<DateTime>(nullable: true),
                     ContactName = table.Column<string>(nullable: true),
                     PostalCode = table.Column<string>(nullable: true),
                     State = table.Column<string>(nullable: true),
@@ -203,11 +222,165 @@ namespace Dotz.Infra.EF.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "orders",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("MySQL:AutoIncrement", true),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    DeletedAt = table.Column<DateTime>(nullable: true),
+                    TotalPoints = table.Column<int>(nullable: false),
+                    DeliveryId = table.Column<long>(nullable: false),
+                    UserId = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_orders", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_orders_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "accounttransactions",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("MySQL:AutoIncrement", true),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    DeletedAt = table.Column<DateTime>(nullable: true),
+                    Type = table.Column<int>(nullable: false),
+                    Description = table.Column<string>(nullable: true),
+                    Points = table.Column<int>(nullable: false),
+                    NewBalance = table.Column<int>(nullable: false),
+                    AccountId = table.Column<long>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_accounttransactions", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_accounttransactions_Accounts_AccountId",
+                        column: x => x.AccountId,
+                        principalTable: "Accounts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "deliveries",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("MySQL:AutoIncrement", true),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    DeletedAt = table.Column<DateTime>(nullable: true),
+                    OrderId = table.Column<long>(nullable: false),
+                    Address_ContactName = table.Column<string>(nullable: true),
+                    Address_PostalCode = table.Column<string>(nullable: true),
+                    Address_State = table.Column<string>(nullable: true),
+                    Address_City = table.Column<string>(nullable: true),
+                    Address_Neighborhood = table.Column<string>(nullable: true),
+                    Address_StreetName = table.Column<string>(nullable: true),
+                    Address_StreetNumber = table.Column<string>(nullable: true),
+                    Address_Complement = table.Column<string>(nullable: true),
+                    Address_Phone = table.Column<string>(nullable: true),
+                    DueDate = table.Column<DateTime>(nullable: false),
+                    Status = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_deliveries", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_deliveries_orders_OrderId",
+                        column: x => x.OrderId,
+                        principalTable: "orders",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "orderItems",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("MySQL:AutoIncrement", true),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    DeletedAt = table.Column<DateTime>(nullable: true),
+                    OrderId = table.Column<long>(nullable: false),
+                    ProductId = table.Column<long>(nullable: false),
+                    Quantity = table.Column<int>(nullable: false),
+                    UnityPoints = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_orderItems", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_orderItems_orders_OrderId",
+                        column: x => x.OrderId,
+                        principalTable: "orders",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_orderItems_products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "aa33380a-c427-4530-b2a8-bd45ae0e8cef", 0, "f70526fa-5575-478e-bd15-082a794da723", "gintoki@oddjobsgin.com", (short)0, (short)1, null, "Sakata Gintoki", "GINTOKI@ODDJOBSGIN.COM", "GINTOKI@ODDJOBSGIN.COM", "AQAAAAEAACcQAAAAEAzxCT/OEOsvhFl8SJwmgGTgL6gzZCKKpngoHwB5eHQnYyhMo13XYDyTY2+dVx32jQ==", null, (short)0, "B2BX54QK5XIGVSF5E2UIW756NRTFEY2R", (short)0, "gintoki@oddjobsgin.com" });
+
+            migrationBuilder.InsertData(
+                table: "products",
+                columns: new[] { "Id", "CreatedAt", "DeletedAt", "Points", "Quantity", "Title" },
+                values: new object[,]
+                {
+                    { 1L, new DateTime(2019, 9, 16, 4, 41, 54, 251, DateTimeKind.Local).AddTicks(5751), null, 44992, 2, "DigiCam Binóculo com Câmera Digital" },
+                    { 2L, new DateTime(2019, 9, 16, 4, 41, 54, 251, DateTimeKind.Local).AddTicks(7352), null, 14992, 13, "Polidor Automotivo" },
+                    { 3L, new DateTime(2019, 9, 16, 4, 41, 54, 251, DateTimeKind.Local).AddTicks(7382), null, 3676, 1, "Forma Para Pizza 25cm - Alumínio Fortaleza" },
+                    { 4L, new DateTime(2019, 9, 16, 4, 41, 54, 251, DateTimeKind.Local).AddTicks(7388), null, 14937, 21, "Panela de Vápor Elétrica Oster Gran Taste 700W" },
+                    { 5L, new DateTime(2019, 9, 16, 4, 41, 54, 251, DateTimeKind.Local).AddTicks(7391), null, 5811, 10, "Travesseiro Magico - Santista" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Accounts",
+                columns: new[] { "Id", "CreatedAt", "DeletedAt", "PointBalance", "UserId" },
+                values: new object[] { 1L, new DateTime(2019, 9, 16, 4, 41, 54, 251, DateTimeKind.Local).AddTicks(7640), null, 466000, "aa33380a-c427-4530-b2a8-bd45ae0e8cef" });
+
+            migrationBuilder.InsertData(
+                table: "Addresses",
+                columns: new[] { "Id", "City", "Complement", "ContactName", "CreatedAt", "DeletedAt", "Neighborhood", "Phone", "PostalCode", "State", "StreetName", "StreetNumber", "UserId" },
+                values: new object[] { 1L, "São Paulo", "Google Brasil", "Shimpachi", new DateTime(2019, 9, 16, 4, 41, 54, 250, DateTimeKind.Local).AddTicks(9323), null, "Itaim Bibi", "(11) 2395-8400", "04538-133", "SP", "Av. Brg. Faria Lima", "3477", "aa33380a-c427-4530-b2a8-bd45ae0e8cef" });
+
+            migrationBuilder.InsertData(
+                table: "accounttransactions",
+                columns: new[] { "Id", "AccountId", "CreatedAt", "DeletedAt", "Description", "NewBalance", "Points", "Type" },
+                values: new object[,]
+                {
+                    { 1L, 1L, new DateTime(2019, 9, 11, 4, 41, 54, 252, DateTimeKind.Local).AddTicks(1725), null, "Amazon Credit", 492500, 1500, 0 },
+                    { 2L, 1L, new DateTime(2019, 9, 12, 4, 41, 54, 252, DateTimeKind.Local).AddTicks(2425), null, "Purchase", 476600, 14400, 1 },
+                    { 3L, 1L, new DateTime(2019, 9, 13, 4, 41, 54, 252, DateTimeKind.Local).AddTicks(2437), null, "Extra Credit", 512000, 21000, 0 },
+                    { 4L, 1L, new DateTime(2019, 9, 14, 4, 41, 54, 252, DateTimeKind.Local).AddTicks(2444), null, "Purchase", 487880, 3120, 1 },
+                    { 5L, 1L, new DateTime(2019, 9, 15, 4, 41, 54, 252, DateTimeKind.Local).AddTicks(2451), null, "Purchase", 466000, 25000, 1 }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Accounts_UserId",
                 table: "Accounts",
                 column: "UserId",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_accounttransactions_AccountId",
+                table: "accounttransactions",
+                column: "AccountId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Addresses_UserId",
@@ -251,12 +424,33 @@ namespace Dotz.Infra.EF.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_deliveries_OrderId",
+                table: "deliveries",
+                column: "OrderId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_orderItems_OrderId",
+                table: "orderItems",
+                column: "OrderId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_orderItems_ProductId",
+                table: "orderItems",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_orders_UserId",
+                table: "orders",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Accounts");
+                name: "accounttransactions");
 
             migrationBuilder.DropTable(
                 name: "Addresses");
@@ -277,7 +471,22 @@ namespace Dotz.Infra.EF.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "deliveries");
+
+            migrationBuilder.DropTable(
+                name: "orderItems");
+
+            migrationBuilder.DropTable(
+                name: "Accounts");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "orders");
+
+            migrationBuilder.DropTable(
+                name: "products");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

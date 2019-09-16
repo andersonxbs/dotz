@@ -2,6 +2,7 @@
 {
     public class AccountModel
     {
-        public int Points { get; set; }
+        public long Id { get; set; }
+        public int PointBalance { get; set; }
     }
 }

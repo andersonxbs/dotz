@@ -1,9 +1,7 @@
 ﻿using Dotz.Domain.Contracts.Repositories;
-using Dotz.Domain.Entities.Abstractions;
 using Dotz.Infra.EF.Contexts;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Dotz.Infra.EF.Repositories.Abstractions

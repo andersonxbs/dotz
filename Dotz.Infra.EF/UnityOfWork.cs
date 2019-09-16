@@ -13,6 +13,7 @@ namespace Dotz.Infra.EF
         private IAddressRepository _addressRepository;
         private IAccountRepository _accountRepository;
         private IProductRepository _productRepository;
+        private IOrderRepository _orderRepository;
 
         public UnityOfWork(
             SystemContext context)
@@ -61,6 +62,17 @@ namespace Dotz.Infra.EF
                     _productRepository = new ProductRepository(_context);
 
                 return _productRepository;
+            }
+        }
+
+        public IOrderRepository Orders
+        {
+            get
+            {
+                if (_orderRepository == null)
+                    _orderRepository = new OrderRepository(_context);
+
+                return _orderRepository;
             }
         }
 

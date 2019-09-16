@@ -33,7 +33,7 @@ namespace Dotz.Api.Controllers
                     $"An address is already registered. " +
                     $"Request {Url.Action(nameof(Put))} using PUT HTTP method in order to update it."));
 
-            var address = await _repositories.Addresses.New(user);
+            var address = await _repositories.Addresses.NewAsync(user);
 
             _mapper.Map(addressModel, address);
 

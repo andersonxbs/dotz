@@ -8,6 +8,7 @@ namespace Dotz.Domain.Contracts.Repositories
         IAddressRepository Addresses { get; }
         IAccountRepository Accounts { get; }
         IProductRepository Products { get; }
+        IOrderRepository Orders { get; }
         Task CommitChangesAsync();
     }
 }

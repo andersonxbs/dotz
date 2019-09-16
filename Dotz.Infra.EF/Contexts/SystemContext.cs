@@ -13,5 +13,7 @@ namespace Dotz.Infra.EF.Contexts
 
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Account> Accounts { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Order> Orders { get; set; }
     }
 }

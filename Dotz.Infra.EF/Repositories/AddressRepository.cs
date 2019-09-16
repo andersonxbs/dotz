@@ -15,7 +15,7 @@ namespace Dotz.Infra.EF.Repositories
         {
         }
 
-        public async Task<Address> New(User user)
+        public async Task<Address> NewAsync(User user)
         {
             var address = new Address { User = user };
 
