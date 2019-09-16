@@ -1,0 +1,432 @@
+{
+	"info": {
+		"_postman_id": "e5a59b5c-e08c-4700-b98f-9a227ec7ef7d",
+		"name": "Dotz",
+		"description": "Requisições da Web API desenvolvida para avaliação técnica de vaga de emprego na Dotz.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User - Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"name\": \"Marcus Der Junge\",\r\n\t\"email\": \"marcus@derjunge.com\",\r\n\t\"password\": \"diemilch\",\r\n\t\"repeat_password\": \"diemilch\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:56000/api/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "56000",
+					"path": [
+						"api",
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User - Authenticate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"marcus@derjunge.com\",\n\t\"password\": \"diemilch\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:56000/api/user/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "56000",
+					"path": [
+						"api",
+						"user",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User - Authenticate (Pre-registered user)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"gintoki@oddjobsgin.com\",\n\t\"password\": \"nani???\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:56000/api/user/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "56000",
+					"path": [
+						"api",
+						"user",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User - Get authenticated user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI0NjExYTBjYi0yOGNjLTQxNDctOWQ1NC0xYzA5MmVhOWQzZGUiLCJuYmYiOjE1Njg1NTUwNjksImV4cCI6MTU2ODU1ODY2OSwiaWF0IjoxNTY4NTU1MDY5LCJpc3MiOiJEb3R6IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCJ9.QZ69f5h55Zl7jIJ9yKNNcVyNveMmqSa2rCoahuFKYUk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:56000/api/user/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "56000",
+					"path": [
+						"api",
+						"user",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Address - Register",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI5MjQxNmFlOS02MjBmLTQyNGQtYTY2OS03MDE3NmY5Mjk1ZWIiLCJuYmYiOjE1Njg1NjMwMzMsImV4cCI6MTU2ODU2NjYzMywiaWF0IjoxNTY4NTYzMDMzLCJpc3MiOiJEb3R6IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCJ9.7xBSbaQVijISnpNZ_rmMyEA4l7AQrq9IbRjAoFW3GIg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"contact_name\": \"Marcela Das Mädchen\",\n\t\"postal_code\": \"04538-133\",\n\t\"state\": \"SP\",\n\t\"city\": \"São Paulo\",\n\t\"neighborhood\": \"Itaim Bibi\",\n\t\"street_name\": \"Av. Brg. Faria Lima\",\n\t\"street_number\": \"3477\",\n\t\"complement\": \"Google Brasil\",\n\t\"phone\": \"(11) 2395-8400\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:56000/api/address",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "56000",
+					"path": [
+						"api",
+						"address"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Address - Update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI1OWNkMDgzYS1mNzZiLTQ3ODItOWExZS1kYTI3YjU1OWZiZDkiLCJuYmYiOjE1Njg1NjA1MDMsImV4cCI6MTU2ODU2NDEwMywiaWF0IjoxNTY4NTYwNTAzLCJpc3MiOiJEb3R6IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCJ9.QGd_Xm_FAvyu19S84OjXWbwAuxQJwd2k6fBQNMYqbUQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"contact_name\": \"Marcela Das Mädchen Trinkt Milch\",\n\t\"postal_code\": \"04538-133\",\n\t\"state\": \"SP\",\n\t\"city\": \"São Paulo\",\n\t\"neighborhood\": \"Itaim Bibi\",\n\t\"street_name\": \"Av. Brg. Faria Lima\",\n\t\"street_number\": \"3477\",\n\t\"complement\": \"Google Brasil\",\n\t\"phone\": \"(11) 2395-8400\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:56000/api/address",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "56000",
+					"path": [
+						"api",
+						"address"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Address - Get authenticated user address",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhYTMzMzgwYS1jNDI3LTQ1MzAtYjJhOC1iZDQ1YWUwZThjZWYiLCJuYmYiOjE1Njg2MTk4MDYsImV4cCI6MTU2ODYyMzQwNiwiaWF0IjoxNTY4NjE5ODA2LCJpc3MiOiJEb3R6IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCJ9.VcKeB-xWTzwJhG04TMbneYeqsTMJuSEZpE9bcbtwVlA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:56000/api/address",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "56000",
+					"path": [
+						"api",
+						"address"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Account - Get authenticated user account",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhYTMzMzgwYS1jNDI3LTQ1MzAtYjJhOC1iZDQ1YWUwZThjZWYiLCJuYmYiOjE1Njg2MjMxOTAsImV4cCI6MTU2ODYyNjc5MCwiaWF0IjoxNTY4NjIzMTkwLCJpc3MiOiJEb3R6IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCJ9.sWnC-LSAuM2HA1SixGpBcOzKo6Wf5aYhvFgg-CUPbsg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:56000/api/account",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "56000",
+					"path": [
+						"api",
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Account - Get authenticated user statement",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhYTMzMzgwYS1jNDI3LTQ1MzAtYjJhOC1iZDQ1YWUwZThjZWYiLCJuYmYiOjE1Njg2MjMxOTAsImV4cCI6MTU2ODYyNjc5MCwiaWF0IjoxNTY4NjIzMTkwLCJpc3MiOiJEb3R6IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCJ9.sWnC-LSAuM2HA1SixGpBcOzKo6Wf5aYhvFgg-CUPbsg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:56000/api/account/statement",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "56000",
+					"path": [
+						"api",
+						"account",
+						"statement"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Product - List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:56000/api/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "56000",
+					"path": [
+						"api",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order - Place an order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhYTMzMzgwYS1jNDI3LTQ1MzAtYjJhOC1iZDQ1YWUwZThjZWYiLCJuYmYiOjE1Njg2MjMxOTAsImV4cCI6MTU2ODYyNjc5MCwiaWF0IjoxNTY4NjIzMTkwLCJpc3MiOiJEb3R6IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCJ9.sWnC-LSAuM2HA1SixGpBcOzKo6Wf5aYhvFgg-CUPbsg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n\t{\n\t\t\"product_id\" : 4,\n\t\t\"quantity\" : 1\n\t}\n]"
+				},
+				"url": {
+					"raw": "http://localhost:56000/api/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "56000",
+					"path": [
+						"api",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order - List",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhYTMzMzgwYS1jNDI3LTQ1MzAtYjJhOC1iZDQ1YWUwZThjZWYiLCJuYmYiOjE1Njg2MzEwOTgsImV4cCI6MTU2ODYzNDY5OCwiaWF0IjoxNTY4NjMxMDk4LCJpc3MiOiJEb3R6IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCJ9.ckGpUYJ02LkYbFGiE2DAI_eLztHcS1WBaaePw0SDR1w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:56000/api/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "56000",
+					"path": [
+						"api",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order - Get by id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhYTMzMzgwYS1jNDI3LTQ1MzAtYjJhOC1iZDQ1YWUwZThjZWYiLCJuYmYiOjE1Njg2MzEwOTgsImV4cCI6MTU2ODYzNDY5OCwiaWF0IjoxNTY4NjMxMDk4LCJpc3MiOiJEb3R6IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCJ9.ckGpUYJ02LkYbFGiE2DAI_eLztHcS1WBaaePw0SDR1w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:56000/api/order/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "56000",
+					"path": [
+						"api",
+						"order",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

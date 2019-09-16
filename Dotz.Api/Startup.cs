@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Dotz.Api.Helpers;
 using Dotz.Domain.Contracts.Providers;
 using Dotz.Domain.Contracts.Repositories;
 using Dotz.Domain.Entities;
@@ -101,6 +102,8 @@ namespace Dotz.Api
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseMigration();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

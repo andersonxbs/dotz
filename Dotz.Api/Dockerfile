@@ -4,16 +4,19 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
 WORKDIR /src
-COPY ["Dotz/Dotz.csproj", "Dotz/"]
-RUN dotnet restore "Dotz/Dotz.csproj"
+COPY ["Dotz.Api/Dotz.Api.csproj", "Dotz.Api/"]
+COPY ["Dotz.Domain/Dotz.Domain.csproj", "Dotz.Domain/"]
+COPY ["Dotz.Infra.EF/Dotz.Infra.EF.csproj", "Dotz.Infra.EF/"]
+COPY ["Dotz.Infra.Security/Dotz.Infra.Security.csproj", "Dotz.Infra.Security/"]
+RUN dotnet restore "Dotz.Api/Dotz.Api.csproj"
 COPY . .
-WORKDIR "/src/Dotz"
-RUN dotnet build "Dotz.csproj" -c Release -o /app
+WORKDIR "/src/Dotz.Api"
+RUN dotnet build "Dotz.Api.csproj" -c Release -o /app
 
 FROM build AS publish
-RUN dotnet publish "Dotz.csproj" -c Release -o /app
+RUN dotnet publish "Dotz.Api.csproj" -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
-ENTRYPOINT ["dotnet", "Dotz.dll"]
+ENTRYPOINT ["dotnet", "Dotz.Api.dll"]

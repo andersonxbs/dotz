@@ -1,5 +1,4 @@
-﻿using Dotz.Domain.Contracts;
-using Dotz.Domain.Contracts.Providers;
+﻿using Dotz.Domain.Contracts.Providers;
 using Dotz.Domain.Entities;
 using Dotz.Domain.Settings;
 using Microsoft.AspNetCore.Identity;
